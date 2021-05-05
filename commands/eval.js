@@ -6,7 +6,7 @@ function clean(text) {
 const Discord = require('discord.js');
 
 module.exports.run = async (client, message, args) => {
-	if(!message.author.id == '' || !message.author.id == '') return message.reply('You arent allowed to do that!');
+	if(!message.author.id == '555064829946232832' || !message.author.id == '631179295523602433') return message.reply('You arent allowed to do that!');
 	const code = args.join(' ');
 	const hasAwait = code.includes('await');
 	const hasReturn = code.includes('return');
