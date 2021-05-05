@@ -7,6 +7,7 @@ const Discord = require('discord.js');
 
 module.exports.run = async (client, message, args) => {
 	if(!message.author.id == '555064829946232832' || !message.author.id == '631179295523602433') return message.reply('You arent allowed to do that!');
+	if(!args[0]) return message.channel.send('Give me something to eval -_-');
 	const code = args.join(' ');
 	const hasAwait = code.includes('await');
 	const hasReturn = code.includes('return');
