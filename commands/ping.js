@@ -4,7 +4,7 @@ const Discord = require('discord.js');
 module.exports.run = async (client, message, args) => {
 	const m = await message.channel.send('🏓 Pinging....');
 	const dataPing = Date.now();
-	const data = await client.data.getData();
+	const data = await client.data.getTags();
 	const dataPingNow = Date.now();
 	const dataRealPing = dataPingNow - dataPing;
 	const embed = new Discord.MessageEmbed()

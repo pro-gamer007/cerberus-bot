@@ -101,8 +101,12 @@ module.exports = {
 		}
 		cachegoose.clearCache();
 	},
+	/**
+	 *
+	 * @returns {object} names and responses.
+	 */
 	async getTags() {
-		const data = await cmdSchema.find({});
+		const data = await cmdSchema.find({}).cache(60);
 		const names = [];
 		const responses = [];
 		data.forEach(d => {
