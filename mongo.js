@@ -69,7 +69,7 @@ module.exports = {
 			if (!data) {
 				return 'Could not find that tag. Are you sure thats the correct tag?';
 			}
-			data.name = to;
+			data.name = to.toLowerCase();
 			data.save();
 			cachegoose.clearCache();
 			return `\`${tag}\` is now named \`${data.name}\` and responds with \`${data.response}\``;
