@@ -5,14 +5,14 @@ require('dotenv').config();
 
 const client = new Discord.Client({ fetchAllMembers: true, ws: { properties: { $browser: 'Discord iOS' }, intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_MEMBERS'] } });
 
-client.login('');
+client.login(process.env.bot_token);
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 client.events = new Discord.Collection();
 client.data = require('./mongo');
 
 mongoose.set('useFindAndModify', false);
-mongoose.connect('', {
+mongoose.connect(process.env.mongo, {
 	useNewUrlParser: true,
 	useUnifiedTopology: true,
 }).then(() => {
