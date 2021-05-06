@@ -17,7 +17,7 @@ module.exports.run = async (client, message, args) => {
 	else {
 		return message.channel.send('Please select a proper type (name or response).');
 	}
-	const newTag = await client.data.editTag(args[0], type, args[2]);
+	const newTag = await client.data.editTag(args[0], type, args.slice(2).join(' '));
 	message.channel.send(newTag);
 };
 
