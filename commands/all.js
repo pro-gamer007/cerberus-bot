@@ -6,15 +6,21 @@ module.exports.run = async (client, message, args) => {
 		.setAuthor('Responses', client.user.avatarURL())
 		.setColor('#f2f2f2');
 	const responses = await client.data.getTags();
-	let amount = responses.names.length;
 	if (!responses) return message.channel.send('There are no responses.');
-	if (responses.names < 25) {
-		amount = 25;
+	let response = '\n';
+	for(let i = 0; i < responses.names.length; i++) {
+		response += (`**${i + 1}.** \`${responses.names[i]}\`\n\n`);
 	}
-	for(let i = 0; i < amount; i++) {
-		embed.addField(`${i + 1}. ${responses.names[i]}`, `Response: ${responses.responses[i]}`);
-	}
-	message.channel.send(embed);
+	const splitResponse = Discord.Util.splitMessage(response, {
+		maxLength: 2048,
+		char: '\n',
+		prepend: '',
+		append: '',
+	});
+	splitResponse.forEach(async (a) => {
+		embed.setDescription(a);
+		message.channel.send(embed);
+	});
 };
 
 module.exports.help = {
